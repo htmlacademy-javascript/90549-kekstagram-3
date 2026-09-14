@@ -20,7 +20,7 @@ const imageSubmitButtonElement = imageUploadFormElement.querySelector('.img-uplo
 const previewElement = imageUploadFormElement.querySelector('.img-upload__preview img');
 const previewEffectImageElements = imageUploadFormElement.querySelectorAll('.effects__preview');
 
-let uploadedFile;
+let imageUrl;
 
 const blockSubmitButton = () => {
   imageSubmitButtonElement.disabled = true;
@@ -80,7 +80,7 @@ function closeUploadForm () {
   imageUploadFormElement.reset();
   resetValidateForms();
 
-  URL.revokeObjectURL(uploadedFile);
+  URL.revokeObjectURL(imageUrl);
   previewEffectImageElements.forEach((previewImage) => {
     previewImage.style.backgroundImage = '';
   });
@@ -102,9 +102,7 @@ const initUploadImage = () => {
       return;
     }
 
-    uploadedFile = file;
-
-    const imageUrl = URL.createObjectURL(file);
+    imageUrl = URL.createObjectURL(file);
     previewElement.src = imageUrl;
 
     previewEffectImageElements.forEach((previewImage) => {

@@ -9,7 +9,7 @@ const scaleControlBiggerElement = imageUploadFormElement.querySelector('.scale__
 const scaleControlValueElement = imageUploadFormElement.querySelector('.scale__control--value');
 const imageUploadPreviewElement = imageUploadFormElement.querySelector('.img-upload__preview img');
 
-let currentValue = 100;
+let currentValue = SCALE_CONTROL_DEFAULT;
 
 const updateScale = (value) => {
   if (value < SCALE_CONTROL_MIN) {
@@ -44,6 +44,8 @@ const initPhotoScale = () => {
 
 const resetPhotoScale = () => {
   updateScale(SCALE_CONTROL_DEFAULT);
+  scaleControlSmallerElement.removeEventListener('click', onScaleControlSmallerClick);
+  scaleControlBiggerElement.removeEventListener('click', onScaleControlBiggerClick);
 };
 
 export { initPhotoScale, resetPhotoScale };

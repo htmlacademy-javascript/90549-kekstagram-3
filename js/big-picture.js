@@ -49,9 +49,9 @@ const renderComments = () => {
   commentShowCountElement.textContent = commentsCount;
   commentTotalCountElement.textContent = currentComments.length;
 
-  for (let i = 0; i < commentsCount; i++) {
-    commentsListFragment.append(renderComment(currentComments[i]));
-  }
+  currentComments.slice(0, commentsCount).forEach((comment) => {
+    commentsListFragment.append(renderComment(comment));
+  });
 
   if (currentComments.length <= COMMENTS_STEP || commentsCount >= currentComments.length) {
     commentLoaderButtonElement.classList.add('hidden');
